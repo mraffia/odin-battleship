@@ -34,7 +34,7 @@ test("getPlayerBoard() will return the board the player has", () => {
     expect(Object.keys(playerBoard.getBoard()).length).toBe(100);
 });
 
-test("attack('A1) will attack the coordinate 'A1' of enemy's board", () => {
+test("attack('A1') will attack the coordinate 'A1' of enemy's board", () => {
     let playerOne = new Player();
     let playerTwo = new Player("AI");
 
@@ -43,5 +43,5 @@ test("attack('A1) will attack the coordinate 'A1' of enemy's board", () => {
 
     let playerTwoBoard = playerTwo.getPlayerBoard();
 
-    expect(playerBoard.getBoard()["A1"]).toBe("x");
+    expect(playerTwoBoard.getBoard()["A1"]).toBe("x");
 });
