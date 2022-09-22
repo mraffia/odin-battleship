@@ -22,7 +22,7 @@ const GameBoard = () => {
         let shipCol = coor.charAt(1);
 
         for (let i = 0; i < ship.getLength(); i++) {
-            board[tempCoor] = "o";
+            board[tempCoor] = ship;
             ship.setArea(tempCoor);
 
             if (axis === "hor") {
@@ -35,7 +35,15 @@ const GameBoard = () => {
         }
     }
 
-    return { getBoard, generateBoard, placeShip };
+    const receiveAttack = coor => {
+        if (board[coor] !== null) {
+            board[coor].hit(coor);
+        } else {
+            board[coor] = "x";
+        }
+    }
+
+    return { getBoard, generateBoard, placeShip, receiveAttack };
 
 }
 
