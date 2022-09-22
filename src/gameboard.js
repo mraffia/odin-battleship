@@ -35,5 +35,8 @@ const GameBoard = () => {
         }
     }
 
-    export { getBoard, generateBoard, placeShip }
+    return { getBoard, generateBoard, placeShip };
+
 }
+
+export { GameBoard };

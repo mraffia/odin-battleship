@@ -5,18 +5,24 @@ test("placeShip(ship, 'A1', 'hor') able to place a ship at 'A1' coordinate horiz
     const gameBoard = new GameBoard();
     const ship = new Ship(2);
 
+    gameBoard.generateBoard();
     gameBoard.placeShip(ship, "A1", "hor");
 
-    expect(gameBoard.board["A1"]).toBe("o");
-    expect(gameBoard.board["A2"]).toBe("o");
+    let board = gameBoard.getBoard();
+
+    expect(board["A1"]).toBe("o");
+    expect(board["A2"]).toBe("o");
 });
 
 test("placeShip(ship, 'A1', 'ver') able to place a ship at 'A1' coordinate vertically", () => {
     const gameBoard = new GameBoard();
     const ship = new Ship(2);
 
-    gameBoard.placeShip(ship, "A1", "hor");
+    gameBoard.generateBoard();
+    gameBoard.placeShip(ship, "A1", "ver");\
+
+    let board = gameBoard.getBoard();
     
-    expect(gameBoard.board["A1"]).toBe("o");
-    expect(gameBoard.board["B1"]).toBe("o");
+    expect(board["A1"]).toBe("o");
+    expect(board["B1"]).toBe("o");
 });

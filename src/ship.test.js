@@ -10,7 +10,7 @@ test("hit(1) takes index 1 and marks that ship's area as 'hit'", () => {
 
     let shipArea = ship.getArea();
 
-    expect(ship.shipArea["A1"]).toBe("x");
+    expect(shipArea["A1"]).toBe("x");
 });
 
 test("isSunk() determines if a ship is sunk or not", () => {
