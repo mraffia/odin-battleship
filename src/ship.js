@@ -10,7 +10,11 @@ const Ship = (length) => {
         area[num] = "x";
     }
 
-    return { area, getLength, hit };
+    const isSunk = () => {
+        return !area.includes("o");
+    }
+
+    return { area, getLength, hit, isSunk };
 }
 
 export { Ship };
