@@ -44,11 +44,36 @@ test("receiveAttack('A1') will mark 'hit' a ship placed at 'A1'", () => {
 
 test("receiveAttack('A1') will record the coordinates of the missed shot", () => {
     const gameBoard = new GameBoard();
+    const ship = new Ship(2);
 
     gameBoard.generateBoard();
-    gameBoard.receiveAttack("A1");
+    gameBoard.placeShip(ship, "A1", "hor");
+    gameBoard.receiveAttack("C3");
 
     let board = gameBoard.getBoard();
 
     expect(board["A1"]).toBe("x");
+});
+
+test("areAllSunk() will return false as not all ship has sunk", () => {
+    const gameBoard = new GameBoard();
+    const ship = new Ship(2);
+
+    gameBoard.generateBoard();
+    gameBoard.placeShip(ship, "A1", "hor");
+    gameBoard.receiveAttack("A1");
+
+    expect(gameBoard.areAllSunk()).toBe(false);
+});
+
+test("areAllSunk() will return true as all ship has sunk", () => {
+    const gameBoard = new GameBoard();
+    const ship = new Ship(2);
+
+    gameBoard.generateBoard();
+    gameBoard.placeShip(ship, "A1", "hor");
+    gameBoard.receiveAttack("A1");
+    gameBoard.receiveAttack("A2");
+
+    expect(gameBoard.areAllSunk()).toBe(true);
 });
