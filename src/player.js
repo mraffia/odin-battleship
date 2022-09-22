@@ -3,10 +3,11 @@ import { GameBoard } from "./gameboard.js";
 
 const Player = (status = "human") => {
     let fleet = {};
-    let playerBoard = [];
+    let playerBoard;
 
     const getStatus = () => status;
     const getFleet = () => fleet;
+    const getPlayerBoard = () => playerBoard;
 
     const generateFleet = () => {
         fleet = {};
@@ -23,7 +24,12 @@ const Player = (status = "human") => {
         fleet["Patrol Boat"] = patrolBoat;
     }
 
-    return { getStatus, getFleet, generateFleet };
+    const generatePlayerBoard = () => {
+        playerBoard = new GameBoard();
+        playerBoard.generateBoard();
+    }
+
+    return { getStatus, getFleet, generateFleet, getPlayerBoard, generatePlayerBoard };
 }
 
 export { Player };
