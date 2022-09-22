@@ -16,8 +16,8 @@ const Ship = (length) => {
         return sunk;
     }
 
-    const setArea = (coor, axis) => {
-        
+    const setArea = (coor) => {
+        area[coor] = "o";
     } 
 
     return { area, getLength, hit, isSunk };
