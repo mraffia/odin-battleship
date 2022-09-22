@@ -1,18 +1,24 @@
 const Ship = (length) => {
-    let area = [];
+    let area = {};
     const getLength = () => length;
 
-    for (let i = 0; i < length; i++) {
-        area.push("o");
-    }
-
-    const hit = num => {
-        area[num] = "x";
+    const hit = coor => {
+        area[coor] = "x";
     }
 
     const isSunk = () => {
-        return !area.includes("o");
+        let sunk = true;
+        for (const coor in area) {
+            if (area[coor] === "o") {
+                sunk = false;
+            }
+        }
+        return sunk;
     }
+
+    const setArea = (coor, axis) => {
+        
+    } 
 
     return { area, getLength, hit, isSunk };
 }
