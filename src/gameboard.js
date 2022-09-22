@@ -43,7 +43,18 @@ const GameBoard = () => {
         }
     }
 
-    return { getBoard, generateBoard, placeShip, receiveAttack };
+    const areAllSunk = () => {
+        for (const coor in board) {
+            if (board[coor] !== null && board[coor] !== "x") {
+                if (board[coor].isSunk() === false) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    return { getBoard, generateBoard, placeShip, receiveAttack, areAllSunk };
 
 }
 

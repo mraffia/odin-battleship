@@ -9,13 +9,12 @@ const Ship = (length) => {
     }
 
     const isSunk = () => {
-        let sunk = true;
         for (const coor in area) {
             if (area[coor] === "o") {
-                sunk = false;
+                return false;
             }
         }
-        return sunk;
+        return true;
     }
 
     const setArea = (coor) => {

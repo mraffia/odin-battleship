@@ -52,7 +52,7 @@ test("receiveAttack('A1') will record the coordinates of the missed shot", () =>
 
     let board = gameBoard.getBoard();
 
-    expect(board["A1"]).toBe("x");
+    expect(board["C3"]).toBe("x");
 });
 
 test("areAllSunk() will return false as not all ship has sunk", () => {
