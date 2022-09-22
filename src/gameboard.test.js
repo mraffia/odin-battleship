@@ -10,8 +10,8 @@ test("placeShip(ship, 'A1', 'hor') able to place a ship at 'A1' coordinate horiz
 
     let board = gameBoard.getBoard();
 
-    expect(board["A1"]).toBe("o");
-    expect(board["A2"]).toBe("o");
+    expect(board["A1"]).toEqual(ship);
+    expect(board["A2"]).toEqual(ship);
 });
 
 test("placeShip(ship, 'A1', 'ver') able to place a ship at 'A1' coordinate vertically", () => {
@@ -23,8 +23,8 @@ test("placeShip(ship, 'A1', 'ver') able to place a ship at 'A1' coordinate verti
 
     let board = gameBoard.getBoard();
     
-    expect(board["A1"]).toBe("o");
-    expect(board["B1"]).toBe("o");
+    expect(board["A1"]).toEqual(ship);
+    expect(board["B1"]).toEqual(ship);
 });
 
 test("receiveAttack('A1') will mark 'hit' a ship placed at 'A1'", () => {
@@ -39,5 +39,16 @@ test("receiveAttack('A1') will mark 'hit' a ship placed at 'A1'", () => {
     let shipArea = ship.getArea();
 
     expect(shipArea["A1"]).toBe("x");
+    expect(board["A1"]).toEqual(ship);
+});
+
+test("receiveAttack('A1') will record the coordinates of the missed shot", () => {
+    const gameBoard = new GameBoard();
+
+    gameBoard.generateBoard();
+    gameBoard.receiveAttack("A1");
+
+    let board = gameBoard.getBoard();
+
     expect(board["A1"]).toBe("x");
 });
