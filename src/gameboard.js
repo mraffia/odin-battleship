@@ -1,6 +1,8 @@
 const GameBoard = () => {
     let board = {};
 
+    const getBoard = () => board;
+
     const generateBoard = () => {
         let hor = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
 
