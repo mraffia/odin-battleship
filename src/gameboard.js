@@ -16,7 +16,6 @@ const GameBoard = () => {
         }
     }
 
-    // TODO: check if out of bounds
     const placeShip = (ship, coor, axis) => {
         let tempCoor = coor;
         let shipRow = coor.charAt(0);

@@ -34,7 +34,18 @@ test("getPlayerBoard() will return the board the player has", () => {
     expect(Object.keys(playerBoard.getBoard()).length).toBe(100);
 });
 
-// // TODO
-// test("randomPlacement() will place all five ships on the player's board randomly", () => {
+test("randomPlacements() will place all five new ships on the player's board randomly", () => {
+    let player = new Player();
 
-// });
+    player.generateFleet();
+    player.generatePlayerBoard();
+    player.randomPlacements();
+
+    let fleet = player.getFleet();
+    
+    expect(fleet['Carrier'].isSunk()).toBe(false);
+    expect(fleet['Battleship'].isSunk()).toBe(false);
+    expect(fleet['Destroyer'].isSunk()).toBe(false);
+    expect(fleet['Submarine'].isSunk()).toBe(false);
+    expect(fleet['Patrol Boat'].isSunk()).toBe(false); 
+});
