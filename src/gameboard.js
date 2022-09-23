@@ -20,7 +20,7 @@ const GameBoard = () => {
     const placeShip = (ship, coor, axis) => {
         let tempCoor = coor;
         let shipRow = coor.charAt(0);
-        let shipCol = coor.charAt(1);
+        let shipCol = coor.slice(1);
 
         for (let i = 0; i < ship.getLength(); i++) {
             board[tempCoor] = ship;
@@ -35,6 +35,34 @@ const GameBoard = () => {
             }
         }
 
+        return true;
+    }
+
+    const canPlaceShip = (ship, coor, axis) => {
+        let tempCoor = coor;
+        let shipRow = coor.charAt(0);
+        let shipCol = coor.slice(1);
+
+        for (let i = 0; i < ship.getLength(); i++) {
+            if (axis === "hor") {
+                if (board[tempCoor] !== null) {
+                    return false;
+                } else if (board[tempCoor] === undefined) {
+                    return false;
+                }
+                shipCol = Number(shipCol) + 1;
+                tempCoor = shipRow + shipCol;
+            } else if (axis === "ver") {
+                if (board[tempCoor] !== null) {
+                    return false;
+                } else if (board[tempCoor] === undefined) {
+                    return false;
+                }
+                shipRow = row[row.indexOf(shipRow) + 1];
+                tempCoor = shipRow + shipCol;
+            }
+        }
+    
         return true;
     }
 
@@ -60,7 +88,7 @@ const GameBoard = () => {
         return true;
     }
 
-    return { getBoard, generateBoard, placeShip, receiveAttack, areAllSunk };
+    return { getBoard, generateBoard, placeShip, receiveAttack, areAllSunk, canPlaceShip };
 
 }
 
