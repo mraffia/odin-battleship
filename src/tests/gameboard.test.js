@@ -1,5 +1,5 @@
-import GameBoard from "../gameboard.js";
-import Ship from "../ship.js";
+import GameBoard from "../factories/gameboard.js";
+import Ship from "../factories/ship.js";
 
 test("placeShip(ship, 'A1', 'hor') able to place a ship at 'A1' coordinate horizontally", () => {
     const gameBoard = GameBoard();

@@ -1,4 +1,4 @@
-import Player from "../player.js"
+import Player from "../factories/player.js"
 
 test("getStatus() will return 'human' if the player is a human", () => {
     const playerOne = Player();

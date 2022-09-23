@@ -1,5 +1,5 @@
-import GameBoard from "../gameboard.js";
-import Ship from "../ship.js";
+import GameBoard from "../factories/gameboard.js";
+import Ship from "../factories/ship.js";
 
 test("hit(1) takes index 1 and marks that ship's area as 'hit'", () => {
     const gameBoard = GameBoard();

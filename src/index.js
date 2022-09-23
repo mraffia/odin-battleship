@@ -1,5 +1,5 @@
 import './style.css';
-import Player from "./player.js";
+import Player from "./factories/player.js";
 
 const start = () => {
     const playerOne = Player();

@@ -7,9 +7,9 @@ module.exports = {
         index: './src/index.js',
         shipPlacementPage: './src/shipPlacementPage.js',
         battlePage: './src/battlePage.js',
-        ship: './src/ship.js',
-        gameboard: './src/gameboard.js',
-        player: './src/player.js',
+        ship: './src/factories/ship.js',
+        gameboard: './src/factories/gameboard.js',
+        player: './src/factories/player.js',
     },
     devtool: 'inline-source-map',
     devServer: {
