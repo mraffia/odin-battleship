@@ -16,6 +16,7 @@ const GameBoard = () => {
         }
     }
 
+    // TODO: check if out of bounds
     const placeShip = (ship, coor, axis) => {
         let tempCoor = coor;
         let shipRow = coor.charAt(0);
@@ -33,14 +34,19 @@ const GameBoard = () => {
                 tempCoor = shipRow + shipCol;
             }
         }
+
+        return true;
     }
 
     const receiveAttack = coor => {
-        if (board[coor] !== null) {
+        if (board[coor] === "x") {
+            return false;
+        } else if (board[coor] !== null) {
             board[coor].hit(coor);
         } else {
             board[coor] = "x";
         }
+        return true;
     }
 
     const areAllSunk = () => {

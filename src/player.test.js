@@ -33,3 +33,8 @@ test("getPlayerBoard() will return the board the player has", () => {
 
     expect(Object.keys(playerBoard.getBoard()).length).toBe(100);
 });
+
+// TODO
+test("randomPlacement() will place all five ships on the player's board randomly", () => {
+
+});
