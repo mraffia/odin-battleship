@@ -79,10 +79,7 @@ export default (status = "human") => {
 
         let attackEnemy = attack(coor, enemy);
 
-        let result = {}
-        result[coor] = attackEnemy;
-        
-        return result;
+        return [coor, attackEnemy];
     }
 
     return { 
