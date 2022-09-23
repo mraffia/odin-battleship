@@ -17,13 +17,13 @@ const GameBoard = () => {
     }
 
     const placeShip = (ship, coor, axis) => {
-        let tempCoor = coor;
-        let shipRow = coor.charAt(0);
-        let shipCol = coor.slice(1);
-
         if (canPlaceShip(ship, coor, axis) === false) {
             return;
         } 
+
+        let tempCoor = coor;
+        let shipRow = coor.charAt(0);
+        let shipCol = coor.slice(1);
 
         for (let i = 0; i < ship.getLength(); i++) {
             board[tempCoor] = ship;
@@ -68,13 +68,25 @@ const GameBoard = () => {
     }
 
     const receiveAttack = coor => {
-        if (board[coor] === "x" || board[coor] === undefined) {
-            return false;
-        } else if (board[coor] !== null) {
+        if (canReceiveAttack(coor) === false) {
+            return;
+        }
+
+        if (board[coor] !== null) {
             board[coor].hit(coor);
         } else {
             board[coor] = "x";
         }
+    }
+
+    const canReceiveAttack = coor => {
+        if (board[coor] === "x" || board[coor] === undefined) {
+            return false;
+        } else if (board[coor] !== null) {
+            if (board[coor].getArea()[coor] === "x") {
+                return false;
+            }
+        } 
         return true;
     }
 
@@ -89,7 +101,7 @@ const GameBoard = () => {
         return true;
     }
 
-    return { getBoard, generateBoard, placeShip, receiveAttack, areAllSunk, canPlaceShip };
+    return { getBoard, generateBoard, placeShip, receiveAttack, areAllSunk, canPlaceShip, canReceiveAttack };
 
 }
 

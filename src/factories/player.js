@@ -58,7 +58,11 @@ const Player = (status = "human") => {
     }
 
     const attack = (coor, enemy) => {
-        enemy.playerBoard.receiveAttack(coor);
+        if (enemy.playerBoard.canReceiveAttack(coor) === true) {
+            enemy.playerBoard.receiveAttack(coor);
+            return true;
+        } 
+        return false;
     }
 
     return { playerBoard, getStatus, getFleet, generateFleet, generatePlayerBoard, randomPlacements, attack };
