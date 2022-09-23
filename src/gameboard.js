@@ -22,6 +22,10 @@ const GameBoard = () => {
         let shipRow = coor.charAt(0);
         let shipCol = coor.slice(1);
 
+        if (canPlaceShip(ship, coor, axis) === false) {
+            return false;
+        } 
+
         for (let i = 0; i < ship.getLength(); i++) {
             board[tempCoor] = ship;
             ship.setArea(tempCoor);
