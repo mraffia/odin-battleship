@@ -39,3 +39,12 @@ test("randomPlacements() will place all five new ships on the player's board ran
     expect(fleet['Patrol Boat'].isSunk()).toBe(false); 
 });
 
+test("randomAttack(enemy) will attack a random coordinate on enemy's board", () => {
+    let player = new Player();
+    let enemy = new Player();
+
+    enemy.generatePlayerBoard();
+    let attackedCoor = player.randomAttack(enemy);
+
+    expect(enemy.playerBoard[attackedCoor]).toBe("x");
+});

@@ -5,6 +5,10 @@ const Player = (status = "human") => {
     let fleet = {};
     let playerBoard = new GameBoard();
 
+    const row = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
+    const col = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+    const axis = ["hor", "ver"];
+
     const getStatus = () => status;
     const getFleet = () => fleet;
 
@@ -29,10 +33,6 @@ const Player = (status = "human") => {
 
     const randomPlacements = () => {
         playerBoard.generateBoard();
-
-        const row = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
-        const col = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
-        const axis = ["hor", "ver"];
 
         for (const ship in fleet) {
             let invalid = true;
