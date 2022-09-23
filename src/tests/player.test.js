@@ -44,7 +44,9 @@ test("randomAttack(enemy) will attack a random coordinate on enemy's board", () 
     let enemy = new Player();
 
     enemy.generatePlayerBoard();
-    let attackedCoor = player.randomAttack(enemy);
 
-    expect(enemy.playerBoard.getBoard()[attackedCoor]).toBe("x");
+    let attackedCoor = player.randomAttack(enemy);
+    let enemyPlayerBoard = enemy.playerBoard.getBoard();
+
+    expect(enemyPlayerBoard[attackedCoor]).toBe("x");
 });

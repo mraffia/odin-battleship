@@ -21,7 +21,13 @@ const Ship = (length) => {
         area[coor] = "o";
     } 
 
-    return { getLength, getArea, hit, isSunk, setArea };
+    return { 
+        getLength, 
+        getArea, 
+        hit, 
+        isSunk, 
+        setArea 
+    };
 }
 
 export { Ship };
