@@ -36,10 +36,7 @@ const Player = (status = "human") => {
 
         for (const ship in fleet) {
             let invalid = true;
-            let ranRow;
-            let ranCol;
-            let ranAxis;
-            let coor;
+            let ranRow, ranCol, ranAxis, coor;
 
             while (invalid) {
                 ranRow = row[Math.floor(Math.random() * row.length)];
@@ -73,7 +70,25 @@ const Player = (status = "human") => {
         return false;
     }
 
-    return { playerBoard, getStatus, getFleet, generateFleet, generatePlayerBoard, randomPlacements, attack, placeOneShip };
+    const randomAttack = (enemy) => {
+        let ranRow = row[Math.floor(Math.random() * row.length)];
+        let ranCol = col[Math.floor(Math.random() * col.length)];
+        let coor = ranRow + ranCol;
+        attack(coor, enemy);
+        return coor;
+    }
+
+    return { 
+        playerBoard, 
+        getStatus, 
+        getFleet, 
+        generateFleet, 
+        generatePlayerBoard, 
+        randomPlacements, 
+        attack, 
+        placeOneShip,
+        randomAttack
+    };
 }
 
 export { Player };

@@ -101,7 +101,15 @@ const GameBoard = () => {
         return true;
     }
 
-    return { getBoard, generateBoard, placeShip, receiveAttack, areAllSunk, canPlaceShip, canReceiveAttack };
+    return { 
+        getBoard, 
+        generateBoard, 
+        placeShip, 
+        receiveAttack, 
+        areAllSunk, 
+        canPlaceShip, 
+        canReceiveAttack 
+    };
 
 }
 
