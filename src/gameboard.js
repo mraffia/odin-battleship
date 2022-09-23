@@ -1,4 +1,4 @@
-const GameBoard = () => {
+export default () => {
     let board = {};
     const row = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
 
@@ -112,5 +112,3 @@ const GameBoard = () => {
     };
 
 }
-
-export { GameBoard };

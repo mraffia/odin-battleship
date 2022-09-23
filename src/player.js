@@ -1,9 +1,9 @@
-import { GameBoard } from "../factories/gameboard.js";
-import { Ship } from "../factories/ship.js";
+import GameBoard from "./gameboard.js";
+import Ship from "./ship.js";
 
-const Player = (status = "human") => {
+export default (status = "human") => {
     let fleet = {};
-    let playerBoard = new GameBoard();
+    let playerBoard;
 
     const row = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
     const col = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
@@ -11,14 +11,15 @@ const Player = (status = "human") => {
 
     const getStatus = () => status;
     const getFleet = () => fleet;
+    const getPlayerBoard = () => playerBoard;
 
     const generateFleet = () => {
         fleet = {};
-        let carrier = new Ship(5);
-        let battleship = new Ship(4);
-        let destroyer = new Ship(3);
-        let submarine = new Ship(3);
-        let patrolBoat = new Ship(2);
+        let carrier = Ship(5);
+        let battleship = Ship(4);
+        let destroyer = Ship(3);
+        let submarine = Ship(3);
+        let patrolBoat = Ship(2);
 
         fleet["Carrier"] = carrier;
         fleet["Battleship"] = battleship;
@@ -28,6 +29,7 @@ const Player = (status = "human") => {
     }
 
     const generatePlayerBoard = () => {
+        playerBoard = GameBoard();
         playerBoard.generateBoard();
     }
 
@@ -55,8 +57,8 @@ const Player = (status = "human") => {
     }
 
     const attack = (coor, enemy) => {
-        if (enemy.playerBoard.canReceiveAttack(coor) === true) {
-            enemy.playerBoard.receiveAttack(coor);
+        if (enemy.getPlayerBoard().canReceiveAttack(coor) === true) {
+            enemy.getPlayerBoard().receiveAttack(coor);
             return true;
         } 
         return false;
@@ -79,16 +81,14 @@ const Player = (status = "human") => {
     }
 
     return { 
-        playerBoard, 
         getStatus, 
-        getFleet, 
+        getFleet,
+        getPlayerBoard,
         generateFleet, 
-        generatePlayerBoard, 
+        generatePlayerBoard,
         randomPlacements, 
         attack, 
         placeOneShip,
         randomAttack
     };
 }
-
-export { Player };

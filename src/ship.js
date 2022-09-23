@@ -1,4 +1,4 @@
-const Ship = (length) => {
+export default (length) => {
     let area = {};
 
     const getLength = () => length;
@@ -29,5 +29,3 @@ const Ship = (length) => {
         setArea 
     };
 }
-
-export { Ship };

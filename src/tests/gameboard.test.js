@@ -1,9 +1,9 @@
-import { GameBoard } from "../factories/gameboard.js";
-import { Ship } from "../factories/ship.js";
+import GameBoard from "../gameboard.js";
+import Ship from "../ship.js";
 
 test("placeShip(ship, 'A1', 'hor') able to place a ship at 'A1' coordinate horizontally", () => {
-    const gameBoard = new GameBoard();
-    const ship = new Ship(2);
+    const gameBoard = GameBoard();
+    const ship = Ship(2);
 
     gameBoard.generateBoard();
     gameBoard.placeShip(ship, "A1", "hor");
@@ -15,8 +15,8 @@ test("placeShip(ship, 'A1', 'hor') able to place a ship at 'A1' coordinate horiz
 });
 
 test("placeShip(ship, 'A1', 'ver') able to place a ship at 'A1' coordinate vertically", () => {
-    const gameBoard = new GameBoard();
-    const ship = new Ship(2);
+    const gameBoard = GameBoard();
+    const ship = Ship(2);
 
     gameBoard.generateBoard();
     gameBoard.placeShip(ship, "A1", "ver");
@@ -28,8 +28,8 @@ test("placeShip(ship, 'A1', 'ver') able to place a ship at 'A1' coordinate verti
 });
 
 test("canPlaceShip(ship, 'A1', 'hor') will return true cause it is a valid and empty coordinate", () => {
-    const gameBoard = new GameBoard();
-    const ship = new Ship(2);
+    const gameBoard = GameBoard();
+    const ship = Ship(2);
 
     gameBoard.generateBoard();
 
@@ -37,8 +37,8 @@ test("canPlaceShip(ship, 'A1', 'hor') will return true cause it is a valid and e
 });
 
 test("canPlaceShip(ship, 'A11', 'hor') will return false cause its coordinate is out of bounds", () => {
-    const gameBoard = new GameBoard();
-    const ship = new Ship(2);
+    const gameBoard = GameBoard();
+    const ship = Ship(2);
 
     gameBoard.generateBoard();
 
@@ -46,9 +46,9 @@ test("canPlaceShip(ship, 'A11', 'hor') will return false cause its coordinate is
 });
 
 test("canPlaceShip(ship, 'A2', 'hor') will return false cause its coordinate is on top of another ship", () => {
-    const gameBoard = new GameBoard();
-    const ship1 = new Ship(2);
-    const ship2 = new Ship(2);
+    const gameBoard = GameBoard();
+    const ship1 = Ship(2);
+    const ship2 = Ship(2);
 
     gameBoard.generateBoard();
     gameBoard.placeShip(ship1, "A1", "hor");
@@ -57,8 +57,8 @@ test("canPlaceShip(ship, 'A2', 'hor') will return false cause its coordinate is 
 });
 
 test("canPlaceShip(ship, 'A10', 'hor') will return false cause parts of its ship's coordinate is out of bounds", () => {
-    const gameBoard = new GameBoard();
-    const ship = new Ship(2);
+    const gameBoard = GameBoard();
+    const ship = Ship(2);
 
     gameBoard.generateBoard();
 
@@ -66,9 +66,9 @@ test("canPlaceShip(ship, 'A10', 'hor') will return false cause parts of its ship
 });
 
 test("canPlaceShip(ship, 'A1', 'ver') will return false cause parts of its ship's coordinate is on top of another ship", () => {
-    const gameBoard = new GameBoard();
-    const ship1 = new Ship(2);
-    const ship2 = new Ship(2);
+    const gameBoard = GameBoard();
+    const ship1 = Ship(2);
+    const ship2 = Ship(2);
 
     gameBoard.generateBoard();
     gameBoard.placeShip(ship1, "B1", "hor");
@@ -77,8 +77,8 @@ test("canPlaceShip(ship, 'A1', 'ver') will return false cause parts of its ship'
 });
 
 test("receiveAttack('A1') will mark 'hit' a ship placed at 'A1'", () => {
-    const gameBoard = new GameBoard();
-    const ship = new Ship(2);
+    const gameBoard = GameBoard();
+    const ship = Ship(2);
 
     gameBoard.generateBoard();
     gameBoard.placeShip(ship, "A1", "hor");
@@ -92,8 +92,8 @@ test("receiveAttack('A1') will mark 'hit' a ship placed at 'A1'", () => {
 });
 
 test("receiveAttack('C3') will mark 'x' the coordinates of the missed shot", () => {
-    const gameBoard = new GameBoard();
-    const ship = new Ship(2);
+    const gameBoard = GameBoard();
+    const ship = Ship(2);
 
     gameBoard.generateBoard();
     gameBoard.placeShip(ship, "A1", "hor");
@@ -105,8 +105,8 @@ test("receiveAttack('C3') will mark 'x' the coordinates of the missed shot", () 
 });
 
 test("canReceiveAttack('A1') will return true as there is a ship at the coordinate", () => {
-    const gameBoard = new GameBoard();
-    const ship = new Ship(2);
+    const gameBoard = GameBoard();
+    const ship = Ship(2);
 
     gameBoard.generateBoard();
     gameBoard.placeShip(ship, "A1", "hor");
@@ -115,7 +115,7 @@ test("canReceiveAttack('A1') will return true as there is a ship at the coordina
 });
 
 test("canReceiveAttack('A1') will return true as the coordinate is in the board", () => {
-    const gameBoard = new GameBoard();
+    const gameBoard = GameBoard();
 
     gameBoard.generateBoard();
 
@@ -123,7 +123,7 @@ test("canReceiveAttack('A1') will return true as the coordinate is in the board"
 });
 
 test("canReceiveAttack('A1') will return false as the coordinate is already marked 'x'", () => {
-    const gameBoard = new GameBoard();
+    const gameBoard = GameBoard();
 
     gameBoard.generateBoard();
     gameBoard.receiveAttack("A1");
@@ -132,7 +132,7 @@ test("canReceiveAttack('A1') will return false as the coordinate is already mark
 });
 
 test("canReceiveAttack('A11') will return false as the coordinate is out of bounds", () => {
-    const gameBoard = new GameBoard();
+    const gameBoard = GameBoard();
 
     gameBoard.generateBoard();
 
@@ -140,8 +140,8 @@ test("canReceiveAttack('A11') will return false as the coordinate is out of boun
 });
 
 test("canReceiveAttack('A1') will return false as the coordinate is an area of a ship that has been hit", () => {
-    const gameBoard = new GameBoard();
-    const ship = new Ship(2);
+    const gameBoard = GameBoard();
+    const ship = Ship(2);
 
     gameBoard.generateBoard();
     gameBoard.placeShip(ship, "A1", "hor");
@@ -151,8 +151,8 @@ test("canReceiveAttack('A1') will return false as the coordinate is an area of a
 });
 
 test("areAllSunk() will return false as not all ship has sunk", () => {
-    const gameBoard = new GameBoard();
-    const ship = new Ship(2);
+    const gameBoard = GameBoard();
+    const ship = Ship(2);
 
     gameBoard.generateBoard();
     gameBoard.placeShip(ship, "A1", "hor");
@@ -162,8 +162,8 @@ test("areAllSunk() will return false as not all ship has sunk", () => {
 });
 
 test("areAllSunk() will return true as all ship has sunk", () => {
-    const gameBoard = new GameBoard();
-    const ship = new Ship(2);
+    const gameBoard = GameBoard();
+    const ship = Ship(2);
 
     gameBoard.generateBoard();
     gameBoard.placeShip(ship, "A1", "hor");

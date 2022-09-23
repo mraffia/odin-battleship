@@ -1,9 +1,9 @@
-import { GameBoard } from "../factories/gameboard.js";
-import { Ship } from "../factories/ship.js";
+import GameBoard from "../gameboard.js";
+import Ship from "../ship.js";
 
 test("hit(1) takes index 1 and marks that ship's area as 'hit'", () => {
-    const gameBoard = new GameBoard();
-    const ship = new Ship(2);
+    const gameBoard = GameBoard();
+    const ship = Ship(2);
 
     gameBoard.placeShip(ship, "A1", "hor");
     ship.hit("A1");
@@ -14,8 +14,8 @@ test("hit(1) takes index 1 and marks that ship's area as 'hit'", () => {
 });
 
 test("isSunk() determines if a ship is sunk or not", () => {
-    const gameBoard = new GameBoard();
-    const ship = new Ship(2);
+    const gameBoard = GameBoard();
+    const ship = Ship(2);
 
     gameBoard.placeShip(ship, "A1", "hor");
     ship.hit("A1");
@@ -25,7 +25,7 @@ test("isSunk() determines if a ship is sunk or not", () => {
 });
 
 test("setArea('A1') will set coordinate 'A1' as one of the ship's area", () => {
-    const ship = new Ship(2);
+    const ship = Ship(2);
     ship.setArea("A1");
 
     let shipArea = ship.getArea();
@@ -34,6 +34,6 @@ test("setArea('A1') will set coordinate 'A1' as one of the ship's area", () => {
 });
 
 test("getLength() will return 2 as ship with length 2", () => {
-    const ship = new Ship(2);
+    const ship = Ship(2);
     expect(ship.getLength()).toBe(2);
 });
