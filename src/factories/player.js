@@ -76,8 +76,13 @@ export default (status = "human") => {
         let ranRow = row[Math.floor(Math.random() * row.length)];
         let ranCol = col[Math.floor(Math.random() * col.length)];
         let coor = ranRow + ranCol;
-        attack(coor, enemy);
-        return coor;
+
+        let attackEnemy = attack(coor, enemy);
+
+        let result = {}
+        result[coor] = attackEnemy;
+        
+        return result;
     }
 
     return { 
