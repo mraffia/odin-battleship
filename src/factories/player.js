@@ -7,7 +7,6 @@ const Player = (status = "human") => {
 
     const getStatus = () => status;
     const getFleet = () => fleet;
-    const getPlayerBoard = () => playerBoard;
 
     const generateFleet = () => {
         fleet = {};
@@ -58,7 +57,7 @@ const Player = (status = "human") => {
         }
     }
 
-    return { getStatus, getFleet, generateFleet, getPlayerBoard, generatePlayerBoard, randomPlacements };
+    return { playerBoard, getStatus, getFleet, generateFleet, generatePlayerBoard, randomPlacements };
 }
 
 export { Player };

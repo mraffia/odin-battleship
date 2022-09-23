@@ -23,15 +23,6 @@ test("getFleet() will return all ships the player has", () => {
     expect(fleet['Patrol Boat'].getLength()).toBe(2);
 });
 
-test("getPlayerBoard() will return the board the player has", () => {
-    let player = new Player();
-
-    player.generatePlayerBoard();
-    let playerBoard = player.getPlayerBoard();
-
-    expect(Object.keys(playerBoard.getBoard()).length).toBe(100);
-});
-
 test("randomPlacements() will place all five new ships on the player's board randomly", () => {
     let player = new Player();
 
