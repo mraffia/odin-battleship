@@ -65,7 +65,15 @@ const Player = (status = "human") => {
         return false;
     }
 
-    return { playerBoard, getStatus, getFleet, generateFleet, generatePlayerBoard, randomPlacements, attack };
+    const placeOneShip = (ship, coor, axis) => {
+        if (playerBoard.canPlaceShip(ship, coor, axis) === true) {
+            playerBoard.placeShip(ship, coor, axis);
+            return true;
+        } 
+        return false;
+    }
+
+    return { playerBoard, getStatus, getFleet, generateFleet, generatePlayerBoard, randomPlacements, attack, placeOneShip };
 }
 
 export { Player };
