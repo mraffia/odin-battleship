@@ -3,7 +3,7 @@ import { GameBoard } from "./gameboard.js";
 
 const Player = (status = "human") => {
     let fleet = {};
-    let playerBoard;
+    let playerBoard = new GameBoard();
 
     const getStatus = () => status;
     const getFleet = () => fleet;
@@ -25,11 +25,40 @@ const Player = (status = "human") => {
     }
 
     const generatePlayerBoard = () => {
-        playerBoard = new GameBoard();
         playerBoard.generateBoard();
     }
 
-    return { getStatus, getFleet, generateFleet, getPlayerBoard, generatePlayerBoard };
+    const randomPlacements = () => {
+        playerBoard.generateBoard();
+
+        const row = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
+        const col = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+        const axis = ["hor", "ver"];
+
+        for (const ship in fleet) {
+            let invalid = true;
+            let ranRow;
+            let ranCol;
+            let ranAxis;
+            let coor;
+
+            while (invalid) {
+                ranRow = row[Math.floor(Math.random() * row.length)];
+                ranCol = col[Math.floor(Math.random() * col.length)];
+                ranAxis = axis[Math.floor(Math.random() * axis.length)];
+                coor = ranRow + ranCol;
+
+                if (playerBoard.canPlaceShip(fleet[ship], coor, ranAxis) === false) {
+                    continue;
+                } else if (playerBoard.canPlaceShip(fleet[ship], coor, ranAxis) === true) {
+                    playerBoard.placeShip(fleet[ship], coor, ranAxis);
+                    invalid = false;
+                }
+            }
+        }
+    }
+
+    return { getStatus, getFleet, generateFleet, getPlayerBoard, generatePlayerBoard, randomPlacements };
 }
 
 export { Player };
