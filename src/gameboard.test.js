@@ -77,3 +77,52 @@ test("areAllSunk() will return true as all ship has sunk", () => {
 
     expect(gameBoard.areAllSunk()).toBe(true);
 });
+
+test("canPlaceShip(ship, 'A1', 'hor') will return true cause it is a valid and empty coordinate", () => {
+    const gameBoard = new GameBoard();
+    const ship = new Ship(2);
+
+    gameBoard.generateBoard();
+
+    expect(gameBoard.canPlaceShip(ship, "A1", "hor")).toBe(true);
+});
+
+test("canPlaceShip(ship, 'A11', 'hor') will return false cause its coordinate is out of bounds", () => {
+    const gameBoard = new GameBoard();
+    const ship = new Ship(2);
+
+    gameBoard.generateBoard();
+
+    expect(gameBoard.canPlaceShip(ship, "A11", "hor")).toBe(false);
+});
+
+test("canPlaceShip(ship, 'A2', 'hor') will return false cause its coordinate is on top of another ship", () => {
+    const gameBoard = new GameBoard();
+    const ship1 = new Ship(2);
+    const ship2 = new Ship(2);
+
+    gameBoard.generateBoard();
+    gameBoard.placeShip(ship1, "A1", "hor");
+
+    expect(gameBoard.canPlaceShip(ship2, "A2", "hor")).toBe(false);
+});
+
+test("canPlaceShip(ship, 'A10', 'hor') will return false cause parts of its ship's coordinate is out of bounds", () => {
+    const gameBoard = new GameBoard();
+    const ship = new Ship(2);
+
+    gameBoard.generateBoard();
+
+    expect(gameBoard.canPlaceShip(ship, "A10", "hor")).toBe(false);
+});
+
+test("canPlaceShip(ship, 'A1', 'ver') will return false cause parts of its ship's coordinate is on top of another ship", () => {
+    const gameBoard = new GameBoard();
+    const ship1 = new Ship(2);
+    const ship2 = new Ship(2);
+
+    gameBoard.generateBoard();
+    gameBoard.placeShip(ship1, "B1", "hor");
+
+    expect(gameBoard.canPlaceShip(ship2, "A1", "ver")).toBe(false);
+});
