@@ -1,5 +1,5 @@
-import { Ship } from "./ship.js";
-import { GameBoard } from "./gameboard.js";
+import { GameBoard } from "../factories/gameboard.js";
+import { Ship } from "../factories/ship.js";
 
 const Player = (status = "human") => {
     let fleet = {};

@@ -1,5 +1,5 @@
-import { GameBoard } from "./gameboard.js";
-import { Ship } from "./ship.js";
+import { GameBoard } from "../factories/gameboard.js";
+import { Ship } from "../factories/ship.js";
 
 test("placeShip(ship, 'A1', 'hor') able to place a ship at 'A1' coordinate horizontally", () => {
     const gameBoard = new GameBoard();
@@ -42,7 +42,7 @@ test("receiveAttack('A1') will mark 'hit' a ship placed at 'A1'", () => {
     expect(board["A1"]).toEqual(ship);
 });
 
-test("receiveAttack('A1') will record the coordinates of the missed shot", () => {
+test("receiveAttack('C3') will mark 'x' the coordinates of the missed shot", () => {
     const gameBoard = new GameBoard();
     const ship = new Ship(2);
 
@@ -53,6 +53,23 @@ test("receiveAttack('A1') will record the coordinates of the missed shot", () =>
     let board = gameBoard.getBoard();
 
     expect(board["C3"]).toBe("x");
+});
+
+test("receiveAttack('A11') will return false as the coordinate is out of bounds", () => {
+    const gameBoard = new GameBoard();
+
+    gameBoard.generateBoard();
+
+    expect(gameBoard.receiveAttack("A11")).toBe(false);
+});
+
+test("receiveAttack('A1') will return false as the coordinate is already marked 'x'", () => {
+    const gameBoard = new GameBoard();
+
+    gameBoard.generateBoard();
+    gameBoard.receiveAttack("A1");
+
+    expect(gameBoard.receiveAttack("A1")).toBe(false);
 });
 
 test("areAllSunk() will return false as not all ship has sunk", () => {

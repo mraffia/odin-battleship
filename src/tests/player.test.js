@@ -1,15 +1,13 @@
-import { Player } from "./player.js"
-import { GameBoard } from "./gameboard.js";
-import { Ship } from "./ship.js";
+import { Player } from "../factories/player.js"
 
 test("getStatus() will return 'human' if the player is a human", () => {
     let player = new Player();
     expect(player.getStatus()).toBe("human");
 });
 
-test("getStatus() will return 'AI' if the player is an AI", () => {
-    let player = new Player("AI");
-    expect(player.getStatus()).toBe("AI");
+test("getStatus() will return 'computer' if the player is a AI", () => {
+    let player = new Player("computer");
+    expect(player.getStatus()).toBe("computer");
 });
 
 test("getFleet() will return all ships the player has", () => {
@@ -49,3 +47,4 @@ test("randomPlacements() will place all five new ships on the player's board ran
     expect(fleet['Submarine'].isSunk()).toBe(false);
     expect(fleet['Patrol Boat'].isSunk()).toBe(false); 
 });
+

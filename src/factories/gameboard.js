@@ -70,7 +70,7 @@ const GameBoard = () => {
     }
 
     const receiveAttack = coor => {
-        if (board[coor] === "x") {
+        if (board[coor] === "x" || board[coor] === undefined) {
             return false;
         } else if (board[coor] !== null) {
             board[coor].hit(coor);
