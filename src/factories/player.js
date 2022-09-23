@@ -58,7 +58,7 @@ const Player = (status = "human") => {
     }
 
     const attack = (coor, enemy) => {
-        enemy.receiveAttack(coor);
+        enemy.playerBoard.receiveAttack(coor);
     }
 
     return { playerBoard, getStatus, getFleet, generateFleet, generatePlayerBoard, randomPlacements, attack };

@@ -22,7 +22,7 @@ const GameBoard = () => {
         let shipCol = coor.slice(1);
 
         if (canPlaceShip(ship, coor, axis) === false) {
-            return false;
+            return;
         } 
 
         for (let i = 0; i < ship.getLength(); i++) {
@@ -37,8 +37,6 @@ const GameBoard = () => {
                 tempCoor = shipRow + shipCol;
             }
         }
-
-        return true;
     }
 
     const canPlaceShip = (ship, coor, axis) => {
