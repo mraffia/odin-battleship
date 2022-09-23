@@ -57,7 +57,11 @@ const Player = (status = "human") => {
         }
     }
 
-    return { playerBoard, getStatus, getFleet, generateFleet, generatePlayerBoard, randomPlacements };
+    const attack = (coor, enemy) => {
+        enemy.receiveAttack(coor);
+    }
+
+    return { playerBoard, getStatus, getFleet, generateFleet, generatePlayerBoard, randomPlacements, attack };
 }
 
 export { Player };
