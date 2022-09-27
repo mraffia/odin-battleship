@@ -1,5 +1,6 @@
 import './style.css';
 import Player from "./factories/player.js";
+import { battlePage } from "./battlePage.js";
 
 function game() {
     const playerOne = Player();
@@ -14,36 +15,38 @@ function game() {
     playerOne.randomPlacements();
     computer.randomPlacements();
 
-    let bothAlive = true;
-    let turn = 1;
-    let result;
+    document.body.appendChild(battlePage(playerOne, computer));
 
-    console.log("START");
+    // let bothAlive = true;
+    // let turn = 1;
+    // let result;
 
-    while(bothAlive) {
-        console.log(turn);
-        turn++;
+    // console.log("START");
 
-        let playerAttack = playerOne.randomAttack(computer);
-        let computerAttack = computer.randomAttack(playerOne);
+    // while(bothAlive) {
+    //     console.log(turn);
+    //     turn++;
 
-        if (playerAttack[1] === true) {
-            if (computer.getPlayerBoard().areAllSunk() === true) {
-                bothAlive = false;
-                result = "Player wins, computer lost"
-            }
-        }
+    //     let playerAttack = playerOne.randomAttack(computer);
+    //     let computerAttack = computer.randomAttack(playerOne);
 
-        if (computerAttack[1] === true) {
-            if (playerOne.getPlayerBoard().areAllSunk() === true) {
-                bothAlive = false;
-                result = "Computer wins, player lost"
-            }
-        }
-    }
+    //     if (playerAttack[1] === true) {
+    //         if (computer.getPlayerBoard().areAllSunk() === true) {
+    //             bothAlive = false;
+    //             result = "Player wins, computer lost"
+    //         }
+    //     }
 
-    console.log(result);
-    console.log("GAME OVER");
+    //     if (computerAttack[1] === true) {
+    //         if (playerOne.getPlayerBoard().areAllSunk() === true) {
+    //             bothAlive = false;
+    //             result = "Computer wins, player lost"
+    //         }
+    //     }
+    // }
+
+    // console.log(result);
+    // console.log("GAME OVER");
 }
 
 game();
