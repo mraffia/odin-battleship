@@ -107,6 +107,7 @@ function start() {
 }
 
 function battle(playerOne, computer) {
+
     while (document.body.hasChildNodes()) {
         document.body.removeChild(document.body.firstChild);
     }
