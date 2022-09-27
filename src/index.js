@@ -43,6 +43,7 @@ function game() {
                 playerText = `You attacked coordinate ${enemyCoors[i]} and it's a ${playerAttack}!`;
             } else if (playerAttack === "hit") {
                 enemySquare.style.cssText += "background: lightcoral;";
+                enemySquare.classList.add('miss');
                 playerText = `You attacked coordinate ${enemyCoors[i]} and it's a ${playerAttack}!`;
                 if (computer.getPlayerBoard().areAllSunk() === true) {
                     if (confirm("You win! Play again?")) {
@@ -62,7 +63,7 @@ function game() {
 
             if (enemyAttack[1] === "miss") {
                 playerSquareSelect.classList.add('miss');
-                enemyText = `Computer attacked coordinate ${enemyAttack[0]} and it's a ${enemyAttack[1]}!`;
+                enemyText = `Computer attacked coordinate ${enemyAttack[i]} and it's a ${enemyAttack[1]}!`;
             } else if (enemyAttack[1] === "hit") {
                 playerSquareSelect.style.cssText += "background: lightcoral;";
                 enemyText = `Computer attacked coordinate ${enemyAttack[0]} and it's a ${enemyAttack[1]}!`;

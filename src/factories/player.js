@@ -73,11 +73,15 @@ export default (status = "human") => {
     }
 
     const randomAttack = (enemy) => {
-        let ranRow = row[Math.floor(Math.random() * row.length)];
-        let ranCol = col[Math.floor(Math.random() * col.length)];
-        let coor = ranRow + ranCol;
+        let ranRow, ranCol, coor;
 
-        let attackEnemy = attack(coor, enemy);
+        let attackEnemy = false;
+        while (!attackEnemy) {
+            ranRow = row[Math.floor(Math.random() * row.length)];
+            ranCol = col[Math.floor(Math.random() * col.length)];
+            coor = ranRow + ranCol;
+            attackEnemy = attack(coor, enemy);
+        }
 
         return [coor, attackEnemy];
     }
