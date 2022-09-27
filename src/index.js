@@ -50,7 +50,7 @@ function start() {
                 }
             } else {
                 if (playerBoard[playerCoors[i]] === null) {
-                    playerSquare.style.cssText += "background: lightcoral; cursor: default;";
+                    playerSquare.style.cssText += "background: lightcoral;";
                 }
             }
         });
@@ -64,7 +64,7 @@ function start() {
                 }
             } else {
                 if (playerBoard[playerCoors[i]] === null) {
-                    playerSquare.style.cssText += "background: white; cursor: pointer;";
+                    playerSquare.style.cssText += "background: white;";
                 }
             }
         });
@@ -136,7 +136,7 @@ function battle(playerOne, computer) {
             let playerText = "";
 
             if (playerAttack === "miss") {
-                enemySquare.classList.add('miss');
+                enemySquare.style.cssText += "background: lightgreen;";
                 playerText = `You attacked coordinate ${enemyCoors[i]} and it's a ${playerAttack}!`;
             } else if (playerAttack === "hit") {
                 enemySquare.style.cssText += "background: lightcoral;";
@@ -190,36 +190,3 @@ function battle(playerOne, computer) {
 }
 
 start();
-
-// let bothAlive = true;
-// let turn = 1;
-// let result;
-
-// console.log("START");
-
-// while(bothAlive) {
-//     console.log(turn);
-//     turn++;
-
-//     let playerAttack = playerOne.randomAttack(computer);
-//     let computerAttack = computer.randomAttack(playerOne);
-
-//     if (playerAttack[1] === true) {
-//         if (computer.getPlayerBoard().areAllSunk() === true) {
-//             bothAlive = false;
-//             result = "Player wins, computer lost"
-//         }
-//     }
-
-//     if (computerAttack[1] === true) {
-//         if (playerOne.getPlayerBoard().areAllSunk() === true) {
-//             bothAlive = false;
-//             result = "Computer wins, player lost"
-//         }
-//     }
-// }
-
-// console.log(result);
-// console.log("GAME OVER");
-
-
