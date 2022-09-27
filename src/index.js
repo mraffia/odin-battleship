@@ -29,7 +29,6 @@ function start() {
 
     let shipInfo = document.querySelector('#ship-info');
     let axisButton = document.querySelector('#axis');
-    let confirmButton = document.querySelector('#confirm');
     let randomizeButton = document.querySelector('#randomize');
     let playerSquares = document.querySelector('#player-board');
     let playerChildren = playerSquares.children;
@@ -100,10 +99,6 @@ function start() {
         }
     });
 
-    confirmButton.addEventListener('click', (e) => {
-        battle(playerOne, computer);
-    });
-
     randomizeButton.addEventListener('click', (e) => {
         playerOne.randomPlacements();
         battle(playerOne, computer);
@@ -143,7 +138,7 @@ function battle(playerOne, computer) {
                 enemySquare.classList.add('miss');
                 playerText = `You attacked coordinate ${enemyCoors[i]} and it's a ${playerAttack}!`;
                 if (computer.getPlayerBoard().areAllSunk() === true) {
-                    if (confirm("You win! (Press any button to restart)")) {
+                    if (confirm("CONGRATS, YOU WIN! (Press any button to restart)")) {
                         start();
                     } else {
                         start();
@@ -167,7 +162,7 @@ function battle(playerOne, computer) {
                 playerSquareSelect.style.cssText += "background: lightcoral;";
                 enemyText = `Computer attacked coordinate ${enemyAttack[0]} and it's a ${enemyAttack[1]}!`;
                 if (playerOne.getPlayerBoard().areAllSunk() === true) {
-                    if (confirm("Computer win :( (Press any button to restart)")) {
+                    if (confirm("THE COMPUTER WINS :( (Press any button to restart)")) {
                         start();
                     } else {
                         start();
