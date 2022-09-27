@@ -14,7 +14,7 @@ body {
     align-items: center;
 }
 
-h1, h2, h3, h4, p {
+h1, h2, p {
     flex: 1;
     text-align: center;
 }
@@ -36,6 +36,18 @@ h1, h2, h3, h4, p {
 #enemy-container {
     margin-right: 40px;
     margin-left: 40px;
+}
+
+#ship-info-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#ship-info {
+    margin: 0px;
+    align-self: center;
 }
 
 #player-board,
@@ -155,4 +167,9 @@ button:before {
 
 button:-webkit-details-marker {
     display: none;
+}
+
+#axis {
+    margin-top: 0px;
+    align-self: center;
 }
