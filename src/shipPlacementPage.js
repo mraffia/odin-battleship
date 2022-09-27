@@ -33,7 +33,7 @@ function shipPlacementPage(player) {
     pageHeader.textContent = "BATTLESHIP";
     placementInfo.textContent = "Place all five of your ships to begin the battle!"
     axisButton.textContent = "Change to Vertical"
-    shipInfo.textContent = "Carrier";
+    shipInfo.textContent = "Placing: Carrier";
     confirmButton.textContent = "Confirm";
     randomizeButton.textContent = "Randomize Placement";
     footer.innerHTML = "By yours truly,&nbsp;<a href='https://github.com/mraffia'>mraffia</a>";

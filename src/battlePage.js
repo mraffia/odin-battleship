@@ -31,7 +31,7 @@ function battlePage(player, enemy) {
     pageHeader.classList.add('page-header');
 
     pageHeader.textContent = "BATTLESHIP";
-    gameInfo.textContent = "Start attacking by clicking any coordinate in the enemy's board!"
+    gameInfo.innerHTML = `Start attacking by clicking any coordinate in the enemy's board!<hr>&nbsp;`;
     playerInfo.textContent = "Player (You)";
     enemyInfo.textContent = "Enemy (Computer)";
     restartButton.textContent = "Restart";
