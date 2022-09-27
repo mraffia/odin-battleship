@@ -14,7 +14,7 @@ body {
     align-items: center;
 }
 
-h1, h2, p {
+h1, h2, h3, h4, p {
     flex: 1;
     text-align: center;
 }
@@ -67,6 +67,16 @@ h1, h2, p {
 
 .miss {
     background: lightgreen;
+}
+
+.buttons-container {
+    display: flex;
+}
+
+#confirm,
+#randomize {
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 #footer {

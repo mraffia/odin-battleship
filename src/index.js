@@ -1,6 +1,7 @@
 import './style.css';
 import Player from "./factories/player.js";
 import { battlePage } from "./battlePage.js";
+import { shipPlacementPage } from "./shipPlacementPage.js";
 
 function game() {
     while (document.body.hasChildNodes()) {
@@ -16,82 +17,80 @@ function game() {
     playerOne.generatePlayerBoard();
     computer.generatePlayerBoard();
 
-    playerOne.randomPlacements();
+    //playerOne.randomPlacements();
     computer.randomPlacements();
 
-    document.body.appendChild(battlePage(playerOne, computer));
+    document.body.appendChild(shipPlacementPage(playerOne));
 
-    let gameInfo = document.querySelector('#game-info');
-    let playerSquares = document.querySelector('#player-board');
-    let computerSquares = document.querySelector('#enemy-board');
-    let computerChildren = computerSquares.children;
+    //document.body.appendChild(battlePage(playerOne, computer));
 
-    const playerBoard = playerOne.getPlayerBoard().getBoard();
-    const playerCoors = Object.keys(playerBoard);
-    const enemyBoard = computer.getPlayerBoard().getBoard();
-    const enemyCoors = Object.keys(enemyBoard);
+    // let gameInfo = document.querySelector('#game-info');
+    // let playerSquares = document.querySelector('#player-board');
+    // let computerSquares = document.querySelector('#enemy-board');
+    // let computerChildren = computerSquares.children;
 
-    for (let i = 0; i < computerChildren.length; i++) {
-        let enemySquare = computerChildren[i];
+    // const playerBoard = playerOne.getPlayerBoard().getBoard();
+    // const playerCoors = Object.keys(playerBoard);
+    // const enemyBoard = computer.getPlayerBoard().getBoard();
+    // const enemyCoors = Object.keys(enemyBoard);
 
-        enemySquare.addEventListener('click', (e) => {
-            let playerAttack = playerOne.attack(enemyCoors[i], computer);
-            let playerText = "";
+    // for (let i = 0; i < computerChildren.length; i++) {
+    //     let enemySquare = computerChildren[i];
 
-            if (playerAttack === "miss") {
-                enemySquare.classList.add('miss');
-                playerText = `You attacked coordinate ${enemyCoors[i]} and it's a ${playerAttack}!`;
-            } else if (playerAttack === "hit") {
-                enemySquare.style.cssText += "background: lightcoral;";
-                enemySquare.classList.add('miss');
-                playerText = `You attacked coordinate ${enemyCoors[i]} and it's a ${playerAttack}!`;
-                if (computer.getPlayerBoard().areAllSunk() === true) {
-                    if (confirm("You win! (Press any button to restart)")) {
-                        game();
-                    } else {
-                        game();
-                    }
-                    return;
-                }
-            } else {
-                playerText = "You attacked an already marked spot!"
-            }
+    //     enemySquare.addEventListener('click', (e) => {
+    //         let playerAttack = playerOne.attack(enemyCoors[i], computer);
+    //         let playerText = "";
 
-            console.log(enemyBoard[enemyCoors[i]]);
+    //         if (playerAttack === "miss") {
+    //             enemySquare.classList.add('miss');
+    //             playerText = `You attacked coordinate ${enemyCoors[i]} and it's a ${playerAttack}!`;
+    //         } else if (playerAttack === "hit") {
+    //             enemySquare.style.cssText += "background: lightcoral;";
+    //             enemySquare.classList.add('miss');
+    //             playerText = `You attacked coordinate ${enemyCoors[i]} and it's a ${playerAttack}!`;
+    //             if (computer.getPlayerBoard().areAllSunk() === true) {
+    //                 if (confirm("You win! (Press any button to restart)")) {
+    //                     game();
+    //                 } else {
+    //                     game();
+    //                 }
+    //                 return;
+    //             }
+    //         } else {
+    //             playerText = "You attacked an already marked spot!"
+    //         }
 
-            let enemyAttack = computer.randomAttack(playerOne);
-            let playerSquareSelect = document.querySelector(`#player-${enemyAttack[0]}`);
-            let enemyText = "";
+    //         console.log(enemyBoard[enemyCoors[i]]);
 
-            if (enemyAttack[1] === "miss") {
-                playerSquareSelect.classList.add('miss');
-                enemyText = `Computer attacked coordinate ${enemyAttack[i]} and it's a ${enemyAttack[1]}!`;
-            } else if (enemyAttack[1] === "hit") {
-                playerSquareSelect.style.cssText += "background: lightcoral;";
-                enemyText = `Computer attacked coordinate ${enemyAttack[0]} and it's a ${enemyAttack[1]}!`;
-                if (playerOne.getPlayerBoard().areAllSunk() === true) {
-                    if (confirm("Computer win :( (Press any button to restart")) {
-                        game();
-                    } else {
-                        game();
-                    }
-                    return;
-                }
-            }
+    //         let enemyAttack = computer.randomAttack(playerOne);
+    //         let playerSquareSelect = document.querySelector(`#player-${enemyAttack[0]}`);
+    //         let enemyText = "";
 
-            console.log(playerBoard[enemyAttack[0]]);
-            gameInfo.innerHTML = `${playerText}<hr>${enemyText}`;
+    //         if (enemyAttack[1] === "miss") {
+    //             playerSquareSelect.classList.add('miss');
+    //             enemyText = `Computer attacked coordinate ${enemyAttack[i]} and it's a ${enemyAttack[1]}!`;
+    //         } else if (enemyAttack[1] === "hit") {
+    //             playerSquareSelect.style.cssText += "background: lightcoral;";
+    //             enemyText = `Computer attacked coordinate ${enemyAttack[0]} and it's a ${enemyAttack[1]}!`;
+    //             if (playerOne.getPlayerBoard().areAllSunk() === true) {
+    //                 if (confirm("Computer win :( (Press any button to restart")) {
+    //                     game();
+    //                 } else {
+    //                     game();
+    //                 }
+    //                 return;
+    //             }
+    //         }
 
-        });
-    }
+    //         console.log(playerBoard[enemyAttack[0]]);
+    //         gameInfo.innerHTML = `${playerText}<hr>${enemyText}`;
+
+    //     });
+    // }
 
 }
 
 game();
-
-function clickAttack() {
-
-}
 
 // let bothAlive = true;
 // let turn = 1;
