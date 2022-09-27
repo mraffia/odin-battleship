@@ -46,8 +46,6 @@ function battlePage(player, enemy) {
         playerSquare.setAttribute('id', `player-${playerCoors[i]}`);
         playerSquare.classList.add('player-square');
 
-        playerSquare.style.cssText = "padding: 19px";
-
         if (playerBoard[playerCoors[i]] !== null) {
             playerSquare.style.cssText += "background: gray;";
         }
@@ -63,8 +61,6 @@ function battlePage(player, enemy) {
 
         enemySquare.setAttribute('id', `enemy-${enemyCoors[i]}`);
         enemySquare.classList.add('enemy-square');
-
-        enemySquare.style.cssText = "padding: 19px; cursor: pointer;";
 
         if (enemyBoard[enemyCoors[i]] !== null) {
             enemySquare.style.cssText += "background: gray;";

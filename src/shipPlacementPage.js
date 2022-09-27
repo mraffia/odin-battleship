@@ -32,7 +32,9 @@ function shipPlacementPage(player) {
     confirmButton.textContent = "Confirm";
     randomizeButton.textContent = "Randomize Placement";
     footer.innerHTML = "By yours truly,&nbsp;<a href='https://github.com/mraffia'>mraffia</a>";
-    
+
+    confirmButton.disabled = true;
+
     const playerBoard = player.getPlayerBoard().getBoard();
     const playerCoors = Object.keys(playerBoard);
 
@@ -41,12 +43,15 @@ function shipPlacementPage(player) {
 
         playerSquare.setAttribute('id', `player-${playerCoors[i]}`);
         playerSquare.classList.add('player-square');
-
-        playerSquare.style.cssText = "padding: 19px";
+        playerSquare.classList.add('placement');
 
         if (playerBoard[playerCoors[i]] !== null) {
             playerSquare.style.cssText += "background: gray;";
         }
+
+        playerSquare.addEventListener('mouseover', (e) => {
+
+        });
 
         playerBoardContainer.appendChild(playerSquare);
     }
