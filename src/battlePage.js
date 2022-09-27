@@ -19,16 +19,16 @@ function battlePage(player, enemy) {
     content.setAttribute('id', 'content');
     gameInfo.setAttribute('id', 'game-info');
     allPlayerContainer.setAttribute('id', 'all-player-container');
+    playerContainer.setAttribute('id', 'player-container');
+    playerBoardContainer.setAttribute('id', 'player-board');
+    playerInfo.setAttribute('id', 'player-info');
+    enemyContainer.setAttribute('id', 'enemy-container');
+    enemyBoardContainer.setAttribute('id', 'enemy-board');
+    enemyInfo.setAttribute('id', 'enemy-Info');
     restartButton.setAttribute('id', 'restart');
     footer.setAttribute('id', 'footer');
 
     pageHeader.classList.add('page-header');
-    playerContainer.classList.add('players-container');
-    playerInfo.classList.add('players-info');
-    playerBoardContainer.classList.add('boards-container');
-    enemyContainer.classList.add('players-container');
-    enemyInfo.classList.add('players-info');
-    enemyBoardContainer.classList.add('boards-container');
 
     pageHeader.textContent = "BATTLESHIP";
     gameInfo.textContent = "Start attacking by clicking any coordinate in the enemy's board!"
@@ -69,31 +69,6 @@ function battlePage(player, enemy) {
         if (enemyBoard[enemyCoors[i]] !== null) {
             enemySquare.style.cssText += "background: gray;";
         }
-
-        enemySquare.addEventListener('click', (e) => {
-            let playerAttack = player.attack(enemyCoors[i], enemy);
-
-            if (playerAttack === "miss") {
-                enemySquare.classList.add('miss');
-            } else if (playerAttack === "hit") {
-                enemySquare.style.cssText += "background: lightcoral;";
-            }
-
-            console.log(enemyBoard[enemyCoors[i]]);
-
-            let enemyAttack = enemy.randomAttack(player);
-            let playerSquareSelect = document.querySelector(`#player-${enemyAttack[0]}`);
-
-            if (enemyAttack[1] === "miss") {
-                playerSquareSelect.classList.add('miss');
-            } else if (enemyAttack[1] === "hit") {
-                playerSquareSelect.style.cssText += "background: lightcoral;";
-            }
-
-            console.log(playerBoard[enemyAttack[0]]);
-            gameInfo.textContent = `You attacked coordinate ${enemyCoors[i]} and it's a ${playerAttack}! --- Computer attacked coordinate ${enemyAttack[0]} and it's a ${enemyAttack[1]}!`
-
-        });
 
         enemyBoardContainer.appendChild(enemySquare);
     }

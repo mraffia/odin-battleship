@@ -3,6 +3,10 @@ import Player from "./factories/player.js";
 import { battlePage } from "./battlePage.js";
 
 function game() {
+    while (document.body.hasChildNodes()) {
+        document.body.removeChild(document.body.firstChild);
+    }
+
     const playerOne = Player();
     const computer = Player("computer");
 
@@ -17,38 +21,102 @@ function game() {
 
     document.body.appendChild(battlePage(playerOne, computer));
 
-    // let bothAlive = true;
-    // let turn = 1;
-    // let result;
+    let gameInfo = document.querySelector('#game-info');
+    let playerSquares = document.querySelector('#player-board');
+    let computerSquares = document.querySelector('#enemy-board');
+    let computerChildren = computerSquares.children;
 
-    // console.log("START");
+    const playerBoard = playerOne.getPlayerBoard().getBoard();
+    const playerCoors = Object.keys(playerBoard);
+    const enemyBoard = computer.getPlayerBoard().getBoard();
+    const enemyCoors = Object.keys(enemyBoard);
 
-    // while(bothAlive) {
-    //     console.log(turn);
-    //     turn++;
+    for (let i = 0; i < computerChildren.length; i++) {
+        let enemySquare = computerChildren[i];
 
-    //     let playerAttack = playerOne.randomAttack(computer);
-    //     let computerAttack = computer.randomAttack(playerOne);
+        enemySquare.addEventListener('click', (e) => {
+            let playerAttack = playerOne.attack(enemyCoors[i], computer);
+            let playerText = "";
 
-    //     if (playerAttack[1] === true) {
-    //         if (computer.getPlayerBoard().areAllSunk() === true) {
-    //             bothAlive = false;
-    //             result = "Player wins, computer lost"
-    //         }
-    //     }
+            if (playerAttack === "miss") {
+                enemySquare.classList.add('miss');
+                playerText = `You attacked coordinate ${enemyCoors[i]} and it's a ${playerAttack}!`;
+            } else if (playerAttack === "hit") {
+                enemySquare.style.cssText += "background: lightcoral;";
+                playerText = `You attacked coordinate ${enemyCoors[i]} and it's a ${playerAttack}!`;
+                if (computer.getPlayerBoard().areAllSunk() === true) {
+                    if (confirm("You win! Play again?")) {
+                        game();
+                        return;
+                    }
+                }
+            } else {
+                playerText = "You attacked an already marked spot!"
+            }
 
-    //     if (computerAttack[1] === true) {
-    //         if (playerOne.getPlayerBoard().areAllSunk() === true) {
-    //             bothAlive = false;
-    //             result = "Computer wins, player lost"
-    //         }
-    //     }
-    // }
+            console.log(enemyBoard[enemyCoors[i]]);
 
-    // console.log(result);
-    // console.log("GAME OVER");
+            let enemyAttack = computer.randomAttack(playerOne);
+            let playerSquareSelect = document.querySelector(`#player-${enemyAttack[0]}`);
+            let enemyText = "";
+
+            if (enemyAttack[1] === "miss") {
+                playerSquareSelect.classList.add('miss');
+                enemyText = `Computer attacked coordinate ${enemyAttack[0]} and it's a ${enemyAttack[1]}!`;
+            } else if (enemyAttack[1] === "hit") {
+                playerSquareSelect.style.cssText += "background: lightcoral;";
+                enemyText = `Computer attacked coordinate ${enemyAttack[0]} and it's a ${enemyAttack[1]}!`;
+                if (playerOne.getPlayerBoard().areAllSunk() === true) {
+                    if (confirm("Computer win! Play again?")) {
+                        game();
+                        return;
+                    }
+                }
+            }
+
+            console.log(playerBoard[enemyAttack[0]]);
+            gameInfo.innerHTML = `${playerText}<hr>${enemyText}`;
+
+        });
+    }
+
 }
 
 game();
+
+function clickAttack() {
+
+}
+
+// let bothAlive = true;
+// let turn = 1;
+// let result;
+
+// console.log("START");
+
+// while(bothAlive) {
+//     console.log(turn);
+//     turn++;
+
+//     let playerAttack = playerOne.randomAttack(computer);
+//     let computerAttack = computer.randomAttack(playerOne);
+
+//     if (playerAttack[1] === true) {
+//         if (computer.getPlayerBoard().areAllSunk() === true) {
+//             bothAlive = false;
+//             result = "Player wins, computer lost"
+//         }
+//     }
+
+//     if (computerAttack[1] === true) {
+//         if (playerOne.getPlayerBoard().areAllSunk() === true) {
+//             bothAlive = false;
+//             result = "Computer wins, player lost"
+//         }
+//     }
+// }
+
+// console.log(result);
+// console.log("GAME OVER");
 
 
