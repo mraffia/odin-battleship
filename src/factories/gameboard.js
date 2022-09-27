@@ -17,7 +17,7 @@ export default () => {
     }
 
     const placeShip = (ship, coor, axis) => {
-        if (canPlaceShip(ship, coor, axis) === false) {
+        if (canPlaceShip(ship, coor, axis)[0] === false) {
             return;
         } 
 
@@ -43,28 +43,31 @@ export default () => {
         let tempCoor = coor;
         let shipRow = coor.charAt(0);
         let shipCol = coor.slice(1);
+        let allCoor = [];
 
         for (let i = 0; i < ship.getLength(); i++) {
             if (axis === "hor") {
                 if (board[tempCoor] !== null) {
-                    return false;
+                    return [false, allCoor];
                 } else if (board[tempCoor] === undefined) {
-                    return false;
+                    return [false, allCoor];
                 }
+                allCoor.push(tempCoor);
                 shipCol = Number(shipCol) + 1;
                 tempCoor = shipRow + shipCol;
             } else if (axis === "ver") {
                 if (board[tempCoor] !== null) {
-                    return false;
+                    return [false, allCoor];
                 } else if (board[tempCoor] === undefined) {
-                    return false;
+                    return [false, allCoor];
                 }
+                allCoor.push(tempCoor);
                 shipRow = row[row.indexOf(shipRow) + 1];
                 tempCoor = shipRow + shipCol;
             }
         }
     
-        return true;
+        return [true, allCoor];
     }
 
     const receiveAttack = coor => {

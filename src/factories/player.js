@@ -46,9 +46,9 @@ export default (status = "human") => {
                 ranAxis = axis[Math.floor(Math.random() * axis.length)];
                 coor = ranRow + ranCol;
 
-                if (playerBoard.canPlaceShip(fleet[ship], coor, ranAxis) === false) {
+                if (playerBoard.canPlaceShip(fleet[ship], coor, ranAxis)[0] === false) {
                     continue;
-                } else if (playerBoard.canPlaceShip(fleet[ship], coor, ranAxis) === true) {
+                } else if (playerBoard.canPlaceShip(fleet[ship], coor, ranAxis)[0] === true) {
                     playerBoard.placeShip(fleet[ship], coor, ranAxis);
                     place = true;
                 }
@@ -65,7 +65,7 @@ export default (status = "human") => {
     }
 
     const placeOneShip = (ship, coor, axis) => {
-        if (playerBoard.canPlaceShip(ship, coor, axis) === true) {
+        if (playerBoard.canPlaceShip(ship, coor, axis)[0] === true) {
             playerBoard.placeShip(ship, coor, axis);
             return true;
         } 
