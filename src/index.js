@@ -24,6 +24,42 @@ function game() {
 
     //document.body.appendChild(battlePage(playerOne, computer));
 
+    const playerBoard = playerOne.getPlayerBoard().getBoard();
+    const playerCoors = Object.keys(playerBoard);
+    const enemyBoard = computer.getPlayerBoard().getBoard();
+    const enemyCoors = Object.keys(enemyBoard);
+
+    let gameInfo = document.querySelector('#game-info');
+    let playerSquares = document.querySelector('#player-board');
+    let playerChildren = playerSquares.children;
+
+    let carrier = playerOne.getFleet()["Carrier"];
+    let axis = "hor";
+
+    for (let i = 0; i < playerChildren.length; i++) {
+        let playerSquare = playerChildren[i];
+
+        playerSquare.addEventListener('mouseover', (e) => {
+            let canPlace = playerOne.getPlayerBoard().canPlaceShip(carrier, playerCoors[i], axis);
+            if (canPlace[0] === true) {
+                playerSquare.style.cssText += "background: gray;";
+
+                for (let i = 0; i < canPlace[1].length; i++) {
+                    let shipSquare = document.querySelector(`#player-${canPlace[1][i]}`);
+                    shipSquare.style.cssText += "background: gray;";
+                }
+            } else {
+                playerSquare.style.cssText += "background: lightcoral;";
+            }
+        });
+        
+        playerSquare.addEventListener('mouseout', (e) => {
+            for (let i = 0; i < playerChildren.length; i++) {
+                playerChildren[i].style.cssText += "background: white;";
+            }
+        });
+    }
+
     // let gameInfo = document.querySelector('#game-info');
     // let playerSquares = document.querySelector('#player-board');
     // let computerSquares = document.querySelector('#enemy-board');

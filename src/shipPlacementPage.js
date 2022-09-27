@@ -33,7 +33,7 @@ function shipPlacementPage(player) {
     pageHeader.textContent = "BATTLESHIP";
     placementInfo.textContent = "Place all five of your ships to begin the battle!"
     axisButton.textContent = "Change to Vertical"
-    shipInfo.textContent = "SHIPS NAME";
+    shipInfo.textContent = "Carrier";
     confirmButton.textContent = "Confirm";
     randomizeButton.textContent = "Randomize Placement";
     footer.innerHTML = "By yours truly,&nbsp;<a href='https://github.com/mraffia'>mraffia</a>";
@@ -49,14 +49,6 @@ function shipPlacementPage(player) {
         playerSquare.setAttribute('id', `player-${playerCoors[i]}`);
         playerSquare.classList.add('player-square');
         playerSquare.classList.add('placement');
-
-        if (playerBoard[playerCoors[i]] !== null) {
-            playerSquare.style.cssText += "background: gray;";
-        }
-
-        playerSquare.addEventListener('mouseover', (e) => {
-
-        });
 
         playerBoardContainer.appendChild(playerSquare);
     }
