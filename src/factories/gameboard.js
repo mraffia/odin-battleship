@@ -74,8 +74,10 @@ export default () => {
 
         if (board[coor] !== null) {
             board[coor].hit(coor);
+            return "hit";
         } else {
             board[coor] = "x";
+            return "miss";
         }
     }
 

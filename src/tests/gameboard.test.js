@@ -82,12 +82,13 @@ test("receiveAttack('A1') will mark 'hit' a ship placed at 'A1'", () => {
 
     gameBoard.generateBoard();
     gameBoard.placeShip(ship, "A1", "hor");
-    gameBoard.receiveAttack("A1");
 
+    let received = gameBoard.receiveAttack("A1");
     let board = gameBoard.getBoard();
     let shipArea = ship.getArea();
 
     expect(shipArea["A1"]).toBe("x");
+    expect(received).toBe("hit");
     expect(board["A1"]).toEqual(ship);
 });
 
@@ -97,10 +98,11 @@ test("receiveAttack('C3') will mark 'x' the coordinates of the missed shot", () 
 
     gameBoard.generateBoard();
     gameBoard.placeShip(ship, "A1", "hor");
-    gameBoard.receiveAttack("C3");
 
+    let received = gameBoard.receiveAttack("C3");
     let board = gameBoard.getBoard();
 
+    expect(received).toBe("miss");
     expect(board["C3"]).toBe("x");
 });
 

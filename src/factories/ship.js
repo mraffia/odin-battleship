@@ -22,6 +22,7 @@ export default (length) => {
     } 
 
     return { 
+        area,
         getLength, 
         getArea, 
         hit, 

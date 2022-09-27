@@ -58,8 +58,8 @@ export default (status = "human") => {
 
     const attack = (coor, enemy) => {
         if (enemy.getPlayerBoard().canReceiveAttack(coor) === true) {
-            enemy.getPlayerBoard().receiveAttack(coor);
-            return true;
+            let attackEnemy = enemy.getPlayerBoard().receiveAttack(coor);
+            return attackEnemy;
         } 
         return false;
     }
