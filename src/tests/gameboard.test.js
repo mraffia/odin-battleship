@@ -33,7 +33,7 @@ test("canPlaceShip(ship, 'A1', 'hor') will return true cause it is a valid and e
 
     gameBoard.generateBoard();
 
-    expect(gameBoard.canPlaceShip(ship, "A1", "hor")).toBe(true);
+    expect(gameBoard.canPlaceShip(ship, "A1", "hor")[0]).toBe(true);
 });
 
 test("canPlaceShip(ship, 'A11', 'hor') will return false cause its coordinate is out of bounds", () => {
@@ -42,7 +42,7 @@ test("canPlaceShip(ship, 'A11', 'hor') will return false cause its coordinate is
 
     gameBoard.generateBoard();
 
-    expect(gameBoard.canPlaceShip(ship, "A11", "hor")).toBe(false);
+    expect(gameBoard.canPlaceShip(ship, "A11", "hor")[0]).toBe(false);
 });
 
 test("canPlaceShip(ship, 'A2', 'hor') will return false cause its coordinate is on top of another ship", () => {
@@ -53,7 +53,7 @@ test("canPlaceShip(ship, 'A2', 'hor') will return false cause its coordinate is 
     gameBoard.generateBoard();
     gameBoard.placeShip(ship1, "A1", "hor");
 
-    expect(gameBoard.canPlaceShip(ship2, "A2", "hor")).toBe(false);
+    expect(gameBoard.canPlaceShip(ship2, "A2", "hor")[0]).toBe(false);
 });
 
 test("canPlaceShip(ship, 'A10', 'hor') will return false cause parts of its ship's coordinate is out of bounds", () => {
@@ -62,7 +62,7 @@ test("canPlaceShip(ship, 'A10', 'hor') will return false cause parts of its ship
 
     gameBoard.generateBoard();
 
-    expect(gameBoard.canPlaceShip(ship, "A10", "hor")).toBe(false);
+    expect(gameBoard.canPlaceShip(ship, "A10", "hor")[0]).toBe(false);
 });
 
 test("canPlaceShip(ship, 'A1', 'ver') will return false cause parts of its ship's coordinate is on top of another ship", () => {
@@ -73,7 +73,7 @@ test("canPlaceShip(ship, 'A1', 'ver') will return false cause parts of its ship'
     gameBoard.generateBoard();
     gameBoard.placeShip(ship1, "B1", "hor");
 
-    expect(gameBoard.canPlaceShip(ship2, "A1", "ver")).toBe(false);
+    expect(gameBoard.canPlaceShip(ship2, "A1", "ver")[0]).toBe(false);
 });
 
 test("receiveAttack('A1') will mark 'hit' a ship placed at 'A1'", () => {
