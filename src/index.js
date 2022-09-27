@@ -150,8 +150,6 @@ function battle(playerOne, computer) {
                 playerText = "You attacked an already marked spot!"
             }
 
-            console.log(enemyBoard[enemyCoors[i]]);
-
             let enemyAttack = computer.randomAttack(playerOne);
             let playerSquareSelect = document.querySelector(`#player-${enemyAttack[0]}`);
             let enemyText = "";
@@ -172,7 +170,6 @@ function battle(playerOne, computer) {
                 }
             }
 
-            console.log(playerBoard[enemyAttack[0]]);
             gameInfo.innerHTML = `${playerText}<hr>${enemyText}`;
 
         });

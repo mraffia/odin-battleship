@@ -62,10 +62,6 @@ function battlePage(player, enemy) {
         enemySquare.setAttribute('id', `enemy-${enemyCoors[i]}`);
         enemySquare.classList.add('enemy-square');
 
-        if (enemyBoard[enemyCoors[i]] !== null) {
-            enemySquare.style.cssText += "background: gray;";
-        }
-
         enemyBoardContainer.appendChild(enemySquare);
     }
 
