@@ -46,10 +46,12 @@ function game() {
                 enemySquare.classList.add('miss');
                 playerText = `You attacked coordinate ${enemyCoors[i]} and it's a ${playerAttack}!`;
                 if (computer.getPlayerBoard().areAllSunk() === true) {
-                    if (confirm("You win! Play again?")) {
+                    if (confirm("You win! (Press any button to restart)")) {
                         game();
-                        return;
+                    } else {
+                        game();
                     }
+                    return;
                 }
             } else {
                 playerText = "You attacked an already marked spot!"
@@ -68,10 +70,12 @@ function game() {
                 playerSquareSelect.style.cssText += "background: lightcoral;";
                 enemyText = `Computer attacked coordinate ${enemyAttack[0]} and it's a ${enemyAttack[1]}!`;
                 if (playerOne.getPlayerBoard().areAllSunk() === true) {
-                    if (confirm("Computer win! Play again?")) {
+                    if (confirm("Computer win :( (Press any button to restart")) {
                         game();
-                        return;
+                    } else {
+                        game();
                     }
+                    return;
                 }
             }
 
