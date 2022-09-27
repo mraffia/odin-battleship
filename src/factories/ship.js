@@ -1,32 +1,35 @@
 export default (length) => {
-    let area = {};
+  const area = {};
 
-    const getLength = () => length;
-    const getArea = () => area;
+  const getLength = () => length;
+  const getArea = () => area;
 
-    const hit = coor => {
-        area[coor] = "x";
+  const hit = (coor) => {
+    area[coor] = 'x';
+  };
+
+  const isSunk = () => {
+    const areas = Object.entries(area);
+
+    for (let i = 0; i < areas.length; i++) {
+      if (areas[i][1] === 'o') {
+        return false;
+      }
     }
 
-    const isSunk = () => {
-        for (const coor in area) {
-            if (area[coor] === "o") {
-                return false;
-            }
-        }
-        return true;
-    }
+    return true;
+  };
 
-    const setArea = (coor) => {
-        area[coor] = "o";
-    } 
+  const setArea = (coor) => {
+    area[coor] = 'o';
+  };
 
-    return { 
-        area,
-        getLength, 
-        getArea, 
-        hit, 
-        isSunk, 
-        setArea 
-    };
-}
+  return {
+    area,
+    getLength,
+    getArea,
+    hit,
+    isSunk,
+    setArea,
+  };
+};
