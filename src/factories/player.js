@@ -37,10 +37,10 @@ export default (status = "human") => {
         playerBoard.generateBoard();
 
         for (const ship in fleet) {
-            let invalid = true;
             let ranRow, ranCol, ranAxis, coor;
 
-            while (invalid) {
+            let place = false;
+            while (!place) {
                 ranRow = row[Math.floor(Math.random() * row.length)];
                 ranCol = col[Math.floor(Math.random() * col.length)];
                 ranAxis = axis[Math.floor(Math.random() * axis.length)];
@@ -50,7 +50,7 @@ export default (status = "human") => {
                     continue;
                 } else if (playerBoard.canPlaceShip(fleet[ship], coor, ranAxis) === true) {
                     playerBoard.placeShip(fleet[ship], coor, ranAxis);
-                    invalid = false;
+                    place = true;
                 }
             }
         }
