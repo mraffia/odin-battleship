@@ -67,7 +67,7 @@ function battlePage(player, enemy) {
         enemySquare.style.cssText = "padding: 19px; cursor: pointer;";
 
         if (enemyBoard[enemyCoors[i]] !== null) {
-            enemySquare.style.cssText += "background: grey;";
+            enemySquare.style.cssText += "background: gray;";
         }
 
         enemySquare.addEventListener('click', (e) => {
@@ -79,9 +79,20 @@ function battlePage(player, enemy) {
                 enemySquare.style.cssText += "background: lightcoral;";
             }
 
-            gameInfo.textContent = `You attacked coordinate ${enemyCoors[i]} and it's a ${playerAttack}!`
-
             console.log(enemyBoard[enemyCoors[i]]);
+
+            let enemyAttack = enemy.randomAttack(player);
+            let playerSquareSelect = document.querySelector(`#player-${enemyAttack[0]}`);
+
+            if (enemyAttack[1] === "miss") {
+                playerSquareSelect.classList.add('miss');
+            } else if (enemyAttack[1] === "hit") {
+                playerSquareSelect.style.cssText += "background: lightcoral;";
+            }
+
+            console.log(playerBoard[enemyAttack[0]]);
+            gameInfo.textContent = `You attacked coordinate ${enemyCoors[i]} and it's a ${playerAttack}! --- Computer attacked coordinate ${enemyAttack[0]} and it's a ${enemyAttack[1]}!`
+
         });
 
         enemyBoardContainer.appendChild(enemySquare);
