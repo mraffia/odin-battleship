@@ -1,11 +1,20 @@
 # odin-battleship
-Battleship project from Javascript section of the Full Stack Javascript Course on The Odin Project
+Battleship project from Javascript section of the Full Stack Javascript Course on The Odin Project.
 
-### Project Website
+## Project Website
 https://mraffia.github.io/odin-battleship/
 
-### Project Description
-A Battleship game where you need to place five of your ships (or randomize them) and battle against a computer.
+## Project Description
+A Battleship game.
 
-### Tools
-HTML, CSS (Flexbox & CSS Grid), Vanilla Javascript, ESLint, and Jest (Unit testing)
+## Features
+- Place five of your ships vertically or horizontally on the board
+- Randomize your ships placements
+- Play the game against a computer
+
+## Tools
+- HTML
+- CSS
+- Javascript
+- Webpack
+- Jest
